@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 40px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .article-list {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .article-item {
+            margin: 15px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        .article-item a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 20px;
+        }
+        .article-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Articles</h1>
+
+    <div class="post-list">
+        {% for post in posts %}
+            <div class="post-item">
+                <a href="{% url 'view_post' post.slug %}">{{ post.title }}</a>
+            </div>
+        {% empty %}
+            <p>No articles found.</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
